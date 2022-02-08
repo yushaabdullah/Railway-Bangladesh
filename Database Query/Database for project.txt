@@ -1,0 +1,107 @@
+CREATE TABLE CUSTOMER 
+(
+CustomerId int IDENTITY(1,1) PRIMARY KEY,
+LastName varchar(50) NOT NULL ,
+FirstName varchar(50) NOT NULL ,
+Email varchar(50) NOT NULL ,
+CustomerPassword varchar(50) NOT NULL,
+Age int NOT NULL,
+Gender varchar(50) NOT NULL ,
+Phone varchar(50) NOT NULL ,
+)
+
+SELECT * FROM CUSTOMER
+
+/*INSERT INTO CUSTOMER VALUES ('"+last_name+"', '"+first_name+"', '"+email+"', '"+sign_up_confirm_password+"','"+age+"','"+gender+"','"+phone+"')
+
+INSERT INTO LogInUser VALUES ('"+email+"','"+sign_up_confirm_password+"')*/
+
+
+CREATE TABLE LogInUser 
+(
+LoginId int IDENTITY(1,1) PRIMARY KEY,
+CustomerId int NOT NULL FOREIGN KEY REFERENCES CUSTOMER (CustomerId),
+Email varchar(50) NOT NULL ,
+User_Password varchar(50) NOT NULL ,
+)
+
+SELECT * FROM LogInUser 
+
+
+
+CREATE TABLE Train 
+(
+TrainNumber int IDENTITY(1,1) PRIMARY KEY,
+TrainName varchar(50) NOT NULL ,
+Source varchar(50) NOT NULL ,
+Destination varchar(50) NOT NULL ,
+DepartureDate varchar(50) NOT NULL ,
+DepartureTime varchar(50) NOT NULL ,
+ArrivalTime varchar(50) NOT NULL ,
+)
+
+
+
+INSERT INTO Train Values ('Suborno Express','Dhaka', 'Chittagong', '07/10/2021', '08:30 AM', '05:30 PM') 
+INSERT INTO Train Values ('Upaban Express','Dhaka', 'Sylhet', '08/10/2021', '09:40 AM', '03:30 PM') 
+INSERT INTO Train Values ('Upakul Express','Dhaka', 'Noakhali', '07/10/2021', '01:00 PM', '08:00 PM') 
+INSERT INTO Train Values ('Sundarbon Express','Dhaka', 'Khulna', '07/10/2021', '06:30 AM', '04:30 PM') 
+INSERT INTO Train Values ('Barendra Express','Dhaka', 'Rajshahi', '08/10/2021', '10:30 AM', '06:45 PM') 
+INSERT INTO Train Values ('Kishoreganj Express','Dhaka', 'Kishoreganj', '07/10/2021', '2:00 PM', '07:30 PM') 
+INSERT INTO Train Values ('Lalmoni Express','Dhaka', 'Lalmonirhat', '07/10/2021', '9:45 PM', '07:30 AM') 
+INSERT INTO Train Values ('Rangpur Express','Dhaka', 'Rangpur', '08/10/2021', '08:00 AM', '07:45 PM') 
+INSERT INTO Train Values ('Benapole Express','Dhaka', 'Benapole', '07/10/2021', '11:30 AM', '04:00 PM') 
+INSERT INTO Train Values ('Parbati Express','Dhaka', 'Dinajpur', '07/10/2021', '09:30 PM', '05:30 AM') 
+INSERT INTO Train Values ('Isakhan Express','Dhaka', 'Mymensingh', '07/10/2021', '11:00 AM', '03:00 PM')
+INSERT INTO Train Values ('Shovon Express','Dhaka', 'Chittagong', '07/10/2021', '11:00 AM', '03:00 PM') 
+
+
+Select * from Train 
+
+
+CREATE TABLE Seats 
+(
+IndexNumber int IDENTITY(1,1) PRIMARY KEY,
+TrainNumber int NOT NULL FOREIGN KEY REFERENCES Train (TrainNumber),
+DepartureDate varchar(50) NOT NULL ,
+SeatType varchar(50) NOT NULL ,
+SeatNumber varchar(50) NOT NULL ,
+SeatStatus varchar(50) NOT NULL,
+)
+
+
+Select * from Seats 
+
+
+
+
+
+
+SELECT * FROM Train WHERE Source = 'Dhaka' AND Destination = 'Chittagong' AND DepartureDate = '07/10/2021'
+SELECT * FROM Train
+
+SELECT TrainNumber FROM Train WHERE TrainName = '"+train_name+"'
+
+
+DROP TABLE LogInUser
+
+
+
+DELETE From CUSTOMER
+
+Select * from CUSTOMER where Email = '"++"'
+
+Select * from LogInUser
+
+INSERT INTO LogInUser (CustomerId,Email,User_Password) VALUES (1,'yu','sign_up_confirm_password')
+
+DROP TABLE CUSTOMER
+
+
+
+        int train_no = user_home_page.send_train_number;
+        String train_number = String.valueOf(train_no);
+        String departure_date = user_home_page.send_date;
+
+
+Select * from Seats WHERE SeatNumber='"+seat_number+"' AND TrainNumber = '" + train_number + "' AND DepartureDate = '" + departure_date + "'
